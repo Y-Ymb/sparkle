@@ -11,7 +11,7 @@ Install Ansible.
 	On CentOS : sudo yum install ansible  
 	On Debian(Ubuntu, L4FAME) : sudo apt-get install ansible  
 
-If the 'ansible' package is not available in the YUM
+If the ansible package is not available in the YUM
 repositories configured for your machine, you may need
 to add the EPEL repository.
 
