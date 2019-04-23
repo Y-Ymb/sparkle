@@ -54,3 +54,7 @@ This is the remote_user variable at the top of the file.
 Then run the command to install the pre-requisites on all the machines you added to `inventory/sparkle-inventory.yml`:  
 
 	ansible-playbook -i inventory/sparkle-inventory.yml prereqs-install.yml --ask-become-pass
+
+After installing pre-requisites on CentOS, please set BOOST_ROOT to build alps.  
+
+	export BOOST_ROOT=/usr/include/boost169
