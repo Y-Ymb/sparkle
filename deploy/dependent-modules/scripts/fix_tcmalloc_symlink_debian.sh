@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install pre-requisite software for Spark-HPC.
+# Install pre-requisite software for sparkle.
 
 # Fix tcmalloc symlink
 # Find file or symlink .../libtcmalloc.so.NNN (with NNN an int)
