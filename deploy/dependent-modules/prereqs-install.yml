@@ -10,41 +10,12 @@
   become: yes
   remote_user: root
   vars:
-    current_dir: ~/sparkle/deploy/dependent-modules
+    current_dir: ~/dependent-modules/
 
   tasks:
 
-    - name: Include variables from configuration file for Debian
-      include_vars: vars/sparkle-vars-debian.yml
+    - include: tasks/prereqs-install-debian.yml
       when: ansible_os_family == 'Debian'
 
-    - name: Install applications for Debian
-      apt: name="{{item}}" state=latest update_cache=yes
-      with_items: "{{applications_to_install}}"
-      when: ansible_os_family == 'Debian'
-
-    - name: Install libraries for Debian
-      apt: name="{{item}}" state=latest update_cache=yes
-      with_items: "{{libraries_to_install}}"
-      when: ansible_os_family == 'Debian'
-
-    - name: Include variables from configuration file for RHEL
-      include_vars: vars/sparkle-vars-rhel.yml
+    - include: tasks/prereqs-install-rhel.yml
       when: ansible_os_family == 'RedHat'
-
-    - name: Add IUS Repository
-      yum: name="https://centos7.iuscommunity.org/ius-release.rpm"
-      when: ansible_os_family == 'RedHat'
-
-    - name: Install applications for RHEL
-      yum: name="{{item}}" state=latest update_cache=yes
-      with_items: "{{applications_to_install}}"
-      when: ansible_os_family == 'RedHat'
-
-    - name: Install libraries for RHEL
-      yum: name="{{item}}" state=latest update_cache=yes
-      with_items: "{{libraries_to_install}}"
-      when: ansible_os_family == 'RedHat'
-
-    - name: Fix symlink for tcmalloc
-      shell: "{{current_dir}}/scripts/fix_tcmalloc_symlink.sh"
