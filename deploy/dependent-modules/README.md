@@ -58,3 +58,6 @@ Then run the command to install the pre-requisites on all the machines you added
 After installing pre-requisites on CentOS, please set BOOST_ROOT to build alps.  
 
 	export BOOST_ROOT=/usr/include/boost169
+
+## Step 6
+For sparkle build, please execute `fix_tcmalloc_symlink_[OS family].sh` in `scripts/` directory
